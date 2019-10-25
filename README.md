@@ -6,3 +6,5 @@
 
 ## Main body
 ![tool main front](https://raw.githubusercontent.com/vladbabii/3d_printed_toolchanger/master/image_tool_main.JPG)
+
+![tool main front](https://raw.githubusercontent.com/vladbabii/3d_printed_toolchanger/master/image_tool_back.JPG)
