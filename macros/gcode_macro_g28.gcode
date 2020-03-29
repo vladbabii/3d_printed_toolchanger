@@ -9,7 +9,7 @@ variable_y: 0
 variable_z: 0
 variable_e: 0
 gcode:
-  RESPOND PREFIX="info" MSG="Homing status:"
+  RESPOND PREFIX="info" MSG="Homing status: 0=not homed, 1=real homed, 2=fake home"
   RESPOND PREFIX="info" MSG=" X: {printer['gcode_macro HOMING_STATUS'].x}"
   RESPOND PREFIX="info" MSG=" Y: {printer['gcode_macro HOMING_STATUS'].y}"
   RESPOND PREFIX="info" MSG=" Z: {printer['gcode_macro HOMING_STATUS'].z}"
