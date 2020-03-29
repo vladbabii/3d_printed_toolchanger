@@ -1,3 +1,40 @@
+
+## Homing status per axis
+## 0 - not homed
+## 1 - real homed
+## 2 - 
+[gcode_macro HOMING_STATUS]
+variable_x: 0
+variable_y: 0
+variable_z: 0
+variable_e: 0
+gcode:
+  RESPOND PREFIX="info" MSG="Homing status > ..."
+  
+[gcode_macro M84]
+rename_existing: G990084
+gcode:
+  RESPOND PREFIX="info" MSG="Disable Steppers > ..."
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=x VALUE=0
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=y VALUE=0
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=z VALUE=0
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=e VALUE=0
+  G990084
+  
+[gcode_macro M18]
+rename_existing: G990018
+gcode:
+  RESPOND PREFIX="info" MSG="Disable Steppers > ..."
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=x VALUE=0
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=y VALUE=0
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=z VALUE=0
+  SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=e VALUE=0
+  G990018
+
+[gcode_macro SET_KINEMATIC_POSITION]
+rename_existing: REAL_SET_KINEMATIC_POSITION
+gcode:
+
 [gcode_macro G28]
 rename_existing: G990028
 gcode:
