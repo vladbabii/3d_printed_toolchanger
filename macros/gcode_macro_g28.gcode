@@ -2,7 +2,7 @@
 ## Homing status per axis
 ## 0 - not homed
 ## 1 - real homed
-## 2 - 
+## 2 - fake home
 [gcode_macro HOMING_STATUS]
 variable_x: 0
 variable_y: 0
@@ -34,6 +34,23 @@ gcode:
 [gcode_macro SET_KINEMATIC_POSITION]
 rename_existing: REAL_SET_KINEMATIC_POSITION
 gcode:
+  {% if params.X is defined %}
+    RESPOND PREFIX="info" MSG="SET_KINEMATIC_POSITION > X={params.X}"
+    SET_KINEMATIC_POSITION X={params.X}
+    SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=x VALUE=2
+  {% endif %}
+  
+  {% if params.Y is defined %}
+    RESPOND PREFIX="info" MSG="SET_KINEMATIC_POSITION > Y={params.Y}"
+    SET_KINEMATIC_POSITION Y={params.Y}
+    SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=y VALUE=2
+  {% endif %}
+  
+  {% if params.Z is defined %}
+    RESPOND PREFIX="info" MSG="SET_KINEMATIC_POSITION > Z={params.Z}"
+    SET_KINEMATIC_POSITION Z={params.Z}
+    SET_GCODE_VARIABLE MACRO=HOMING_STATUS VARIABLE=z VALUE=2
+  {% endif %}
 
 [gcode_macro G28]
 rename_existing: G990028
